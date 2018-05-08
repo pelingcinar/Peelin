@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "72587906013",
+    "firebase_url": "https://peelin-788c5.firebaseio.com",
+    "project_id": "peelin-788c5",
+    "storage_bucket": "peelin-788c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72587906013:android:4e620f694ef37ddb",
+        "android_client_info": {
+          "package_name": "com.pelingulcinar.peelin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72587906013-vonam3ak77iju2mhalpg0956jg3b2gms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pelingulcinar.peelin",
+            "certificate_hash": "c3c03840d9147939368c63bc9c30ff39982daca4"
+          }
+        },
+        {
+          "client_id": "72587906013-7al3f6td0520gfmukg6ao3oepn2g9reg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_6v5Cz1-9s2L6eQHsbXOvGWpkIlWFZmk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72587906013-7al3f6td0520gfmukg6ao3oepn2g9reg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
