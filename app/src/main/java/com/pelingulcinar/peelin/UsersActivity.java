@@ -1,13 +1,21 @@
 package com.pelingulcinar.peelin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class UsersActivity extends AppCompatActivity {
@@ -25,61 +33,72 @@ public class UsersActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.users_appBar);
 
+        if (getSupportActionBar()!=null) {
+            this.setSupportActionBar(mToolbar);
+            this.getSupportActionBar().setTitle("All Users");
+            this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
-        getSupportActionBar().setTitle("All Users");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setSupportActionBar(mToolbar);
-
-        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
-
+        mUsersDatabase = FirebaseDatabase.getInstance().getReference();
 
         mUsersList = (RecyclerView) findViewById(R.id.users_list);
         mUsersList.setHasFixedSize(true);
         mUsersList.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    /*@Override
+    @Override
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
+        Query query=mUsersDatabase.child("Users").orderByChild("name");
+        FirebaseRecyclerOptions<Users> options =
+                new FirebaseRecyclerOptions.Builder<Users>()
+                        .setQuery(query, Users.class)
+                        .build();
 
-                Users.class,
-                R.layout.users_single_layout,
-                UsersViewHolder.class,
-                mUsersDatabase
-        ) {
-
-
-
-                protected void populateViewHolder(UsersViewHolder usersViewHolder, Users users, int position) {
+        FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
 
 
-                usersViewHolder.setDisplayName(users.getName());
-                usersViewHolder.setUsersStatus(users.getStatus());
-
-                final String user_id = getRef(position).getKey();
-
-                usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @NonNull
                     @Override
-                    public void onClick(View view) {
+                    public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        return null;
+                    }
 
-                        Intent profileIntent = new Intent(UsersActivity.this, ProfileActivity.class);
-                        profileIntent.putExtra("user id", user_id);
-                        startActivity(profileIntent);
+                    @Override
+                    protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users model) {
+                        holder.setDisplayName(model.getName());
+                        holder.setUsersStatus(model.getStatus());
+                    }
+
+                    protected void populateViewHolder(UsersViewHolder usersViewHolder, Users users, int position) {
+
+
+                        usersViewHolder.setDisplayName(users.getName());
+                        usersViewHolder.setUsersStatus(users.getStatus());
+
+                        final String user_id = getRef(position).getKey();
+
+                        usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                Intent profileIntent = new Intent(UsersActivity.this, ProfileActivity.class);
+                                profileIntent.putExtra("user id", user_id);
+                                startActivity(profileIntent);
+
+                            }
+                        });
 
                     }
-                });
-
-            }
-        };
+                };
 
         mUsersList.setAdapter(firebaseRecyclerAdapter);
 
-    }*/
+    }
 
-    /*public static class UsersViewHolder extends RecyclerView.ViewHolder {
+    public static class UsersViewHolder extends RecyclerView.ViewHolder {
 
 
         View mView;
@@ -106,5 +125,5 @@ public class UsersActivity extends AppCompatActivity {
 
         }
 
-    }*/
+    }
 }

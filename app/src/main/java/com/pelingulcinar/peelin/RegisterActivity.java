@@ -36,16 +36,16 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     //progress Dialog
-   // private ProgressDialog mRegProgress;
+   //private ProgressDialog mRegProgress;
 
 
     //Firebase Auth
 
     private FirebaseAuth mAuth;
 
-    //public RegisterActivity(ProgressDialog mRegProgress) {
-       // this.mRegProgress = mRegProgress;
-    //}
+    /*public RegisterActivity(ProgressDialog mRegProgress) {
+        this.mRegProgress = mRegProgress;
+    }*/
 
 
     @Override
@@ -74,9 +74,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = mPassword.getEditText().getText().toString();
 
                 if (!TextUtils.isEmpty(display_name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
+                    /*mRegProgress = new ProgressDialog(RegisterActivity.this);
 
 
-                   /* mRegProgress.setTitle("Registering User");
+                    mRegProgress.setTitle("Registering User");
                     mRegProgress.setMessage("Please wait while we create your account!");
                     mRegProgress.setCanceledOnTouchOutside(false);
                     mRegProgress.show();*/
