@@ -7,4 +7,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hi_rhere_i_m_using_pelin_chat">Hi Rhere! I\'m Using Pelin Chat</string>
+    <string name="e_mail">E mail</string>
+    <string name="password">Password</string>
+    <string name="reg_display_name">Display Name</string>
+    <string name="create_a_new_account">Create a New Account</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="login_to_your_account">Login To Your Account</string>
+    <string name="your_email">Your Email</string>
+    <string name="reg_password">Password</string>
+    <string name="log_in">LOG IN</string>
+    <string name="all_users">All users</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
 </resources>

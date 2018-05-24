@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        /*mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Pelin Chat");*/
+        getSupportActionBar().setTitle("Hi App");
 
         //Tabs
         mViewPager = (ViewPager) findViewById(R.id.main_tabPager);
@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setSupportActionBar(Toolbar mToolbar) {
-    }
+
 
     @Override
     public void onStart() {
@@ -60,23 +59,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-            private void sendToStart() {
+    private void sendToStart() {
 
-                Intent startIntent = new Intent(MainActivity.this, StartActivity.class);
-                startActivity(startIntent);
-                finish();
-            }
+        Intent startIntent = new Intent(MainActivity.this, StartActivity.class);
+        startActivity(startIntent);
+        finish();
+    }
 
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
 
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
-
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -88,11 +85,21 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             sendToStart();
 
+        }
+
+        if(item.getItemId() == R.id.main_settings_btn) {
+
+            Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(settingsIntent);
+        }
+
+        if(item.getItemId() == R.id.main_all_btn) {
+
+            Intent settingsIntent = new Intent(MainActivity.this,UsersActivity.class);
+            startActivity(settingsIntent);
 
         }
 
-
-        return true;
+        return super.onOptionsItemSelected(item);
     }
-
 }

@@ -36,7 +36,7 @@
         android:layout_below="@+id/settings_display_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:text="Hi Rhere! I'm Using Pelin Chat"
+        android:text="Hi There, I'm using Hi App"
         android:textColor="@android:color/white"
         android:textSize="14sp" />
 

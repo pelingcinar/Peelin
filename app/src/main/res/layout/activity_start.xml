@@ -19,7 +19,7 @@
         android:layout_above="@+id/start_reg_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
-        android:text="Welcome to the Chat App"
+        android:text="Welcome to the Hi App"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
