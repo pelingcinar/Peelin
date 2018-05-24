@@ -33,10 +33,11 @@ public class UsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_users);
 
         mToolbar = (Toolbar) findViewById(R.id.users_appBar);
-        setSupportActionBar(mToolbar);
+
 
         getSupportActionBar().setTitle("All Users");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(mToolbar);
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
@@ -51,50 +52,27 @@ public class UsersActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter;
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
-//Options yaptım
-               /* Users.class,
+        FirebaseRecyclerAdapter<Users, UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
+
+                Users.class,
                 R.layout.users_single_layout,
                 UsersViewHolder.class,
-                mUsersDatabase*/
+                mUsersDatabase
         ) {
 
 
-            @NonNull
-            @Override
-            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                Users.class,
-                        R.layout.users_single_layout,
-                        UsersViewHolder.class,
-                        mUsersDatabase
+                protected void populateViewHolder(UsersViewHolder usersViewHolder, Users users, int position) {
 
-                //return null;
-               return null;
-            }
 
-            @Override
-            protected void onBindViewHolder(@NonNull UsersViewHolder usersViewHolder, int position, @NonNull Users users) {
                 usersViewHolder.setDisplayName(users.getName());
                 usersViewHolder.setUsersStatus(users.getStatus());
 
                 final String user_id = getRef(position).getKey();
-            //}
-
-            //@Override
-            //override yorum değildi
-           // protected void populateViewHolder(UsersViewHolder usersViewHolder, Users users, int position) {
-
-
-                /*usersViewHolder.setDisplayName(users.getName());
-                usersViewHolder.setUsersStatus(users.getStatus());
-
-                final String user_id = getRef(position).getKey();*/
 
                 usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View view) {
 
                         Intent profileIntent = new Intent(UsersActivity.this, ProfileActivity.class);
                         profileIntent.putExtra("user id", user_id);
@@ -107,9 +85,6 @@ public class UsersActivity extends AppCompatActivity {
         };
 
         mUsersList.setAdapter(firebaseRecyclerAdapter);
-        //Adapteri options yaptım
-
-        //Bir üst satırımda yoruma aldım çünkü çalışmıyor
 
     }
 
@@ -118,27 +93,27 @@ public class UsersActivity extends AppCompatActivity {
 
         View mView;
 
-         public UsersViewHolder(View itemView) {
-             super(itemView);
+        public UsersViewHolder(View itemView) {
+            super(itemView);
 
-             mView = itemView;
-         }
+            mView = itemView;
+        }
 
-         void setDisplayName(String name) {
-
-
-             TextView userNameView = (TextView) mView.findViewById(R.id.user_single_name);
-             userNameView.setText(name);
-
-         }
-
-         void setUsersStatus(String status) {
+        public void setDisplayName(String name) {
 
 
-             TextView userStatusView = (TextView) mView.findViewById(R.id.user_single_status);
-             userStatusView.setText(status);
+            TextView userNameView = (TextView) mView.findViewById(R.id.user_single_name);
+            userNameView.setText(name);
 
-         }
+        }
+
+        public void setUsersStatus(String status) {
+
+
+            TextView userStatusView = (TextView) mView.findViewById(R.id.user_single_status);
+            userStatusView.setText(status);
+
+        }
 
     }
 }

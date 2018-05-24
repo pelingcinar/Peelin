@@ -77,10 +77,10 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(display_name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
 
 
-                    mRegProgress.setTitle("Registering User");
+                   /* mRegProgress.setTitle("Registering User");
                     mRegProgress.setMessage("Please wait while we create your account!");
                     mRegProgress.setCanceledOnTouchOutside(false);
-                    mRegProgress.show();
+                    mRegProgress.show();*/
 
                     register_user(display_name, email, password);
 
@@ -127,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                                startActivity(mainIntent);
                                finish();
 
-                               mRegProgress.dismiss();
+                              // mRegProgress.dismiss();
 
                    /*Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
