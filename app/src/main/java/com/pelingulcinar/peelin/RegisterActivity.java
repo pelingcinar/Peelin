@@ -1,6 +1,5 @@
 package com.pelingulcinar.peelin;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,16 +36,16 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     //progress Dialog
-    private ProgressDialog mRegProgress;
+   // private ProgressDialog mRegProgress;
 
 
     //Firebase Auth
 
     private FirebaseAuth mAuth;
 
-    public RegisterActivity(ProgressDialog mRegProgress) {
-        this.mRegProgress = mRegProgress;
-    }
+    //public RegisterActivity(ProgressDialog mRegProgress) {
+       // this.mRegProgress = mRegProgress;
+    //}
 
 
     @Override
